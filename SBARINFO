@@ -1,0 +1,44 @@
+// Basic Stuff
+base Doom;
+height 0;
+monospacefonts true, "0", center;
+
+resolution 320, 200;
+
+StatusBar Fullscreen, FullscreenOffsets {
+
+// Health & Berserk
+	inInventory PowerStrength {
+		Drawimage "PSTRA0"  ,  30  , -64  ;
+	}
+
+	InventoryBarNotVisible {
+		DrawSelectedInventory AlternateOnEmpty, AlwaysShowCounter, INDEXFONT, 15, -57, 45, -33, untranslated {
+			DrawMugShot 5 , 15 , -57  ; }
+		}
+
+	ifHealth 101 {
+		DrawNumber  3, HUDFONT_DOOM, Blue, Health, alignment(center), 32, -24;
+	} else ifHealth 51 {
+		DrawNumber  3, HUDFONT_DOOM, Green, Health, alignment(center), 32, -24;
+	} else ifHealth 26 {
+		DrawNumber  3, HUDFONT_DOOM, Gold, Health, alignment(center), 32, -24;
+	} else ifHealth 1 {
+		DrawNumber  3, HUDFONT_DOOM, Red, Health, alignment(center), 32, -24;
+	} else {
+		DrawNumber  3, HUDFONT_DOOM, DarkGray, Health, alignment(center), 32, -24;
+	}
+	
+		
+// Armor
+drawimage armoricon, 79, -26;
+	InInventory BasicArmor, 101 {
+		DrawNumber  4, HUDFONT_DOOM, Blue, Armor, alignment(center), 80, -24;
+	} else inInventory BasicArmor, 51 {
+		DrawNumber  4, HUDFONT_DOOM, Green, Armor, alignment(center), 80, -24;
+	} else InInventory BasicArmor, 26 {
+		DrawNumber  4, HUDFONT_DOOM, Gold, Armor, alignment(center), 80, -24;
+	} else InInventory BasicArmor, 1 {
+		DrawNumber  4, HUDFONT_DOOM, Red, Armor, alignment(center), 80, -24;
+	}
+}
