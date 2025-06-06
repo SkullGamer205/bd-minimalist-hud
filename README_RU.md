@@ -10,3 +10,4 @@
 ## Скриншоты
 ![Скриншот 1](.screenshots/1.png)
 ![Скриншот 2](.screenshots/2.png)
+![Скриншот 3](.screenshots/3.png)
