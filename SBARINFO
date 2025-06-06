@@ -1,9 +1,4 @@
 // Basic Stuff
-base Doom;
-height 0;
-monospacefonts true, "0", center;
-
-resolution 320, 200;
 
 StatusBar Fullscreen, FullscreenOffsets {
 
@@ -13,7 +8,7 @@ StatusBar Fullscreen, FullscreenOffsets {
 	}
 
 	InventoryBarNotVisible {
-		DrawSelectedInventory AlternateOnEmpty, AlwaysShowCounter, INDEXFONT, 15, -57, 45, -33, untranslated {
+		DrawSelectedInventory AlternateOnEmpty, AlwaysShowCounter, INDEXFONT, 15, -55, 45, -31, untranslated {
 			DrawMugShot 5 , 15 , -57  ; }
 		}
 
@@ -29,9 +24,8 @@ StatusBar Fullscreen, FullscreenOffsets {
 		DrawNumber  3, HUDFONT_DOOM, DarkGray, Health, alignment(center), 32, -24;
 	}
 	
-		
 // Armor
-drawimage armoricon, 79, -26;
+	drawimage armoricon, 79, -26;
 	InInventory BasicArmor, 101 {
 		DrawNumber  4, HUDFONT_DOOM, Blue, Armor, alignment(center), 80, -24;
 	} else inInventory BasicArmor, 51 {
@@ -41,4 +35,77 @@ drawimage armoricon, 79, -26;
 	} else InInventory BasicArmor, 1 {
 		DrawNumber  4, HUDFONT_DOOM, Red, Armor, alignment(center), 80, -24;
 	}
+	DrawNumber  2, INDEXFONT, Untranslated, SavePercent, alignment(right), whennotzero, 93, -31;
+	
+// Level Info
+	DrawString SmallFont, Gold, 		time,  8,  8, 0, alignment(left);
+	DrawString SmallFont, Untranslated, "K: ", 8, 16, 0, alignment(left);
+	DrawString SmallFont, Untranslated, "I: ", 8, 24, 0, alignment(left);
+	DrawString SmallFont, Untranslated, "S: ", 8, 32, 0, alignment(left);
+	
+	DrawNumber  4, SmallFont, White, kills   , alignment(right), 56, 16;
+	DrawNumber  4, SmallFont, White, items   , alignment(right), 56, 24;
+	DrawNumber  4, SmallFont, White, secrets , alignment(right), 56, 32;
+	
+	DrawString SmallFont, Untranslated, "/", 58, 16, 0, alignment(left);
+	DrawString SmallFont, Untranslated, "/", 58, 24, 0, alignment(left);
+	DrawString SmallFont, Untranslated, "/", 58, 32, 0, alignment(left);
+	
+	DrawNumber  4, SmallFont, White, monsters     , alignment(left), 68, 16;
+	DrawNumber  4, SmallFont, White, totalItems   , alignment(left), 68, 24;
+	DrawNumber  4, SmallFont, White, totalSecrets , alignment(left), 68, 32;
+	
+// All Ammo
+	DrawString SmallFont, White, "P: ", -32, -120, 0, alignment(right);
+	DrawString SmallFont, White, "B: ", -32, -112, 0, alignment(right);
+	DrawString SmallFont, White, "S: ", -32, -104, 0, alignment(right);
+	DrawString SmallFont, White, "R: ", -32,  -96, 0, alignment(right);
+	DrawString SmallFont, White, "C: ", -32,  -88, 0, alignment(right);
+	DrawString SmallFont, White, "G: ", -32,  -80, 0, alignment(right);
+	DrawString SmallFont, White, "V: ", -32,  -72, 0, alignment(right);
+	DrawString SmallFont, White, "H: ", -32,  -64, 0, alignment(right);
+	DrawString SmallFont, White, "N: ", -32, - 56, 0, alignment(right);
+	
+	DrawNumber 3, SmallFont, Gold, ammo Clip1, 	 		 		alignment(right), -8, -120;
+	DrawNumber 3, SmallFont, Gold, ammo Clip2, 	  	 	 		alignment(right), -8, -112;
+	DrawNumber 3, SmallFont, Gold, ammo AmmoShell,  		 	alignment(right), -8, -104;
+	DrawNumber 3, SmallFont, Gold, ammo AmmoRocket, 		 	alignment(right), -8,  -96;
+	DrawNumber 3, SmallFont, Gold, ammo AmmoCell, 	 		 	alignment(right), -8,  -88;
+	DrawNumber 3, SmallFont, Gold, ammo Gas, 		 		 	alignment(right), -8,  -80;
+	DrawNumber 3, SmallFont, Gold, ammo MiniHellRocketAmmo, 	alignment(right), -8,  -72;
+	DrawNumber 3, SmallFont, Gold, ammo SoulAmmo, 				alignment(right), -8,  -64;
+	DrawNumber 3, SmallFont, Gold, ammo Nuke, 				 	alignment(right), -8,  -56;
+	
+	// DrawString SmallFont, Untranslated, "/", 50,  56, 0, alignment(left);
+	// DrawString SmallFont, Untranslated, "/", 50,  64, 0, alignment(left);
+	// DrawString SmallFont, Untranslated, "/", 50,  72, 0, alignment(left);
+	// DrawString SmallFont, Untranslated, "/", 50,  80, 0, alignment(left);
+	// DrawString SmallFont, Untranslated, "/", 50,  88, 0, alignment(left);
+	// DrawString SmallFont, Untranslated, "/", 50,  96, 0, alignment(left);	
+	// DrawString SmallFont, Untranslated, "/", 50, 104, 0, alignment(left);
+	// DrawString SmallFont, Untranslated, "/", 50, 112, 0, alignment(left);
+	// DrawString SmallFont, Untranslated, "/", 50, 120, 0, alignment(left);
+	
+	// DrawNumber 3, SmallFont, Gold, AmmoCapacity Clip1, 	 		 		alignment(left), 60,  56;
+	// DrawNumber 3, SmallFont, Gold, AmmoCapacity Clip2, 	  	 	 		alignment(left), 60,  64;
+	// DrawNumber 3, SmallFont, Gold, AmmoCapacity AmmoShell,  		 	alignment(left), 60,  72;
+	// DrawNumber 3, SmallFont, Gold, AmmoCapacity AmmoRocket, 		 	alignment(left), 60,  80;
+	// DrawNumber 3, SmallFont, Gold, AmmoCapacity AmmoCell, 	 		 	alignment(left), 60,  88;
+	// DrawNumber 3, SmallFont, Gold, AmmoCapacity Gas, 		 		 	alignment(left), 60,  96;
+	// DrawNumber 3, SmallFont, Gold, AmmoCapacity MiniHellRocketAmmo, 	alignment(left), 60, 104;
+	// DrawNumber 3, SmallFont, Gold, AmmoCapacity SoulAmmo, 				alignment(left), 60, 112;
+	// DrawNumber 3, SmallFont, Gold, AmmoCapacity Nuke, 				 	alignment(left), 60, 120;
+	
+// Current Ammo
+	InInventory Ammosuply {
+		DrawImage "BPAKA0", -34, -8;
+	}
+	
+	InInventory Backpack {
+		DrawImage "BPAKA0", -34, -8;
+	}
+	
+	DrawNumber  3, HUDFONT_DOOM, White, Ammo1, alignment(center), -32, -24;
+	DrawNumber  3, INDEXFONT, Black, 	ammo1capacity, Alignment (center), -32, -8;
+	DrawNumber  3, SmallFont, DarkGray, Ammo2, Alignment (center), -32, -31;
 }
