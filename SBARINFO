@@ -8,7 +8,13 @@ StatusBar Fullscreen, FullscreenOffsets {
 	}
 
 		DrawSelectedInventory AlternateOnEmpty, AlwaysShowCounter, INDEXFONT, 15, -55, 45, -31, untranslated {
-			DrawMugShot 5 , 15 , -57  ;
+			InInventory GenderMale, 1 {
+				DrawMugShot "STM", 5, 15, -57;
+			}
+			InInventory GenderFemale, 1 {
+				DrawMugShot "GAL", 5, 15, -57;
+			}
+			
 			InInventory Not InfiniteSprint, 1 {
 				DrawNumber 2, INDEXFONT, white, Ammo UsedStamina, whennotzero | interpolate(4), drawshadow, alignment(right), 45, -31, 0;
 			}
@@ -18,30 +24,12 @@ StatusBar Fullscreen, FullscreenOffsets {
 		}
 	}
 
-	ifHealth 101 {
-		DrawNumber  3, HUDFONT_DOOM, Blue, Health, alignment(center), 32, -24;
-	} else ifHealth 51 {
-		DrawNumber  3, HUDFONT_DOOM, Green, Health, alignment(center), 32, -24;
-	} else ifHealth 26 {
-		DrawNumber  3, HUDFONT_DOOM, Gold, Health, alignment(center), 32, -24;
-	} else ifHealth 1 {
-		DrawNumber  3, HUDFONT_DOOM, Red, Health, alignment(center), 32, -24;
-	} else {
-		DrawNumber  3, HUDFONT_DOOM, DarkGray, Health, alignment(center), 32, -24;
-	}
-	
+	DrawNumber 3, HUDFONT_DOOM, Yellow, health, alignment(center), 32, -24, 0, red, 40, green, 71;
+
 // Armor ///////////////////////////////////////////////////////////////////////
 	drawimage armoricon, 79, -26;
-	InInventory BasicArmor, 101 {
-		DrawNumber  4, HUDFONT_DOOM, Blue, Armor, alignment(center), 80, -24;
-	} else inInventory BasicArmor, 51 {
-		DrawNumber  4, HUDFONT_DOOM, Green, Armor, alignment(center), 80, -24;
-	} else InInventory BasicArmor, 26 {
-		DrawNumber  4, HUDFONT_DOOM, Gold, Armor, alignment(center), 80, -24;
-	} else InInventory BasicArmor, 1 {
-		DrawNumber  4, HUDFONT_DOOM, Red, Armor, alignment(center), 80, -24;
-	}
-	DrawNumber  2, INDEXFONT, Untranslated, SavePercent, alignment(right), whennotzero, 93, -31;
+	DrawNumber 3, HUDFONT_DOOM, Green, armor, whennotzero, alignment(center), 80, -24, 0, yellow, 10, blue, 101;
+	DrawNumber 2, INDEXFONT, Untranslated, SavePercent, alignment(right), whennotzero, 93, -31;
 	
 // Level Info //////////////////////////////////////////////////////////////////
 	DrawString SmallFont, Gold, 		time,  8,  8, 0, alignment(left);
@@ -129,7 +117,30 @@ StatusBar Fullscreen, FullscreenOffsets {
 	}
 	
 	DrawImage AmmoIcon1, -66, -10;	
-	DrawNumber  3, HUDFONT_DOOM, White, Ammo1, 			alignment(center), -32, -24;
-	DrawNumber  3, INDEXFONT, Black, 	ammo1capacity, 	alignment(center), -32,  -8;
-	DrawNumber  3, SmallFont, DarkGray, Ammo2, 			alignment(center), -32, -31;
+	DrawNumber  3, HUDFONT_DOOM, White, Ammo1, fillzeros,	alignment(center), -32, -24;
+	DrawNumber  3, INDEXFONT, Black, 	ammo1capacity, 		alignment(center), -32,  -8;
+	DrawNumber  3, SmallFont, DarkGray, Ammo2, 				alignment(center), -32, -31;
+
+// Rifle Grenade ///////////////////////////////////////////////////////////////
+	IsSelected "Rifle" {
+		InInventory not NoReloading, 1 || IsPlayingAsPurist, 1 {
+			DrawSwitchableImage "RFGLoaded", "NoGren", "Gren", -118, -14, center;
+		} else {
+			DrawSwitchableImage "RFGLoaded", "NoGren", "Gren", -118, -14, center;
+		}
+	}
+	
+// Grenade Indicator ///////////////////////////////////////////////////////////
+	InInventory  Melee_Attacks, 1 {
+		IsSelected not "HandGrenades" {
+			InInventory not FreezenadeSelected, 1 {
+				DrawImage "GRNDA", -96, -8;
+				DrawNumber 1, SMALLFONT, untranslated, Ammo GrenadeAmmo, drawshadow, -90, -20;
+			}
+			InInventory FreezenadeSelected, 1 {
+				DrawImage "FGNDA", -96, -8;
+				DrawNumber 1, SMALLFONT, untranslated, Ammo FreezenadeAmmo, drawshadow, -90, -20;
+			}
+		}
+	}
 }
