@@ -73,8 +73,29 @@ StatusBar Fullscreen, FullscreenOffsets {
 	DrawSwitchableImage weaponslot 9, "STGNUM9", "STYSNUM9", -17, 8;
 	DrawSwitchableImage weaponslot 0, "STGNUM0", "STYSNUM0", -11, 8;
 	
-	DrawImage WeaponIcon, -36, 32;
-	
+	DrawImage WeaponIcon, -36, 40;
+
+// Effects /////////////////////////////////////////////////////////////////////
+	// RADSUIT //
+	inInventory PowerIronfeet {
+		DrawString SmallFont, White, "RAD: ", -24, 48, 0, alignment(right);
+		DrawNumber 3, SmallFont, green, PowerupTime RadSuit, alignment(right), -8, 48, 0;
+	}
+	// INVULNERABILITY //
+	inInventory PowerInvulnerable {
+		DrawString SmallFont, White, "GOD: ", -24, 56, 0, alignment(right);
+		DrawNumber 3, SmallFont, Black, PowerupTime InvulnerabilitySphere, alignment(right), -8, 56, 0;
+	}
+	// INVISIBILITY //
+	inInventory PowerInvisibility {
+		DrawString SmallFont, White, "INV: ", -24, 64, 0, alignment(right);
+		DrawNumber 3, SmallFont, Blue, PowerupTime BlurSphere, alignment(right), -8, 64, 0;
+	}
+	// INFRARED //
+	inInventory HasInfraRed {
+		DrawString SmallFont, White, "VIS: ", -24, 72, 0, alignment(right);
+		DrawNumber 3, SmallFont, White, PowerupTime ArtiTorch, alignment(right), -8, 72, 0;
+	}
 	
 // All Ammo ////////////////////////////////////////////////////////////////////
 	DrawString SmallFont, White, "P: ", -32, -112, 0, alignment(right);
@@ -96,7 +117,7 @@ StatusBar Fullscreen, FullscreenOffsets {
 	DrawNumber 3, SmallFont, Gold, ammo MiniHellRocketAmmo, 	alignment(right), -8,  -64;
 	DrawNumber 3, SmallFont, Gold, ammo SoulAmmo, 				alignment(right), -8,  -56;
 	DrawNumber 3, SmallFont, Gold, ammo Nuke, 				 	alignment(right), -8,  -48;
-	
+		
 // Current Ammo ////////////////////////////////////////////////////////////////
 	// Backpack
 	InInventory Ammosuply {
